@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Plaid Red Cat</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+<style>
+html, body {
+height: 100%;
+margin: 0;
+background-image: url('plaid.png');
+background-repeat: repeat;
+font-family: 'Press Start 2P', monospace;
+font-size: 16px;
+}
+img {
+display: none;
+object-fit: cover;
+object-position: top;
+}
+@media (orientation: landscape) {
+img {
+width: 50%;
+height: 100%;
+margin-left: auto;
+margin-right: auto;
+}
+}
+@media (orientation: portrait) {
+img {
+width: 100%;
+height: 75%;
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+}
+}
+.topbar {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 50px;
+display: flex;
+align-items: center;
+background: rgba(0, 0, 0, 0);
+transition: background 0.3s ease;
+}
+.topbar:hover {
+background: rgba(0, 0, 0, 1);
+color: white;
+}
+.topbar a {
+padding: 0 15px;
+text-decoration: none;
+line-height: 50px;
+background: rgba(0, 0, 0, 0);
+color: rgba(255, 255, 255, 0.4);
+transition: background 0.2s ease, color 0.2s ease;
+}
+.topbar a:hover {
+background: rgba(255, 255, 255, 0.2);
+color: white;
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+<a href="https://discord.gg/volcel"> Discord</a>
+<a href="https://lebanonisaryan.xyz"> Other Website</a>
+<a href="https://antisa.lt/discord-image"> Images</a>
+<a href="https://pick.plaid.red"> Generators</a>
+</div>
+<img id="sit" src="cleo/sit.png" />
+<img id="meow" src="cleo/meow.png" />
+<img id="swing-start" src="cleo/swing-start.png" />
+<img id="swing" src="cleo/swing.png" />
+<img id="swing-end" src="cleo/swing-end.png" />
+<img id="stare" src="cleo/stare.png" />
+<script>
+document.getElementById('sit').style.display = 'block';
+function meow() {
+document.getElementById('sit').style.display = 'none';
+document.getElementById('meow').style.display = 'block';
+setTimeout(() => {
+document.getElementById('meow').style.display = 'none';
+document.getElementById('sit').style.display = 'block';
+}, 500);
+}
+function swing() {
+document.getElementById('sit').style.display = 'none';
+document.getElementById('swing-start').style.display = 'block';
+setTimeout(() => {
+document.getElementById('swing-start').style.display = 'none';
+document.getElementById('swing').style.display = 'block';
+}, 150);
+setTimeout(() => {
+document.getElementById('swing').style.display = 'none';
+document.getElementById('swing-end').style.display = 'block';
+}, 300);
+setTimeout(() => {
+document.getElementById('swing-end').style.display = 'none';
+document.getElementById('sit').style.display = 'block';
+}, 450);
+}
+function stare() {
+document.getElementById('sit').style.display = 'none';
+document.getElementById('stare').style.display = 'block';
+setTimeout(() => {
+document.getElementById('stare').style.display = 'none';
+document.getElementById('sit').style.display = 'block';
+}, 1000);
+}
+
+function animate() {
+setTimeout(() => {
+meow();
+}, 1000);
+setTimeout(() => {
+swing();
+}, 3000);
+setTimeout(() => {
+swing();
+}, 3600);
+setTimeout(() => {
+meow();
+}, 6000);
+setTimeout(() => {
+stare();
+}, 11000);
+setTimeout(() => {
+animate();
+}, 15000);
+}
+window.onload = () => animate();
+</script>
+</body>
+</html>

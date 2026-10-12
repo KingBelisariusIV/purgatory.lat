@@ -1,137 +1,109 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>PURGATORY CAT</title>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lisu Converter</title>
 <style>
-html, body {
-height: 100%;
-margin: 0;
-background-image: url('plaid.png');
-background-repeat: repeat;
-font-family: 'Press Start 2P', monospace;
-font-size: 16px;
+body {
+    font-family: sans-serif;
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #f5f5f5;
+    color: #222;
 }
-img {
-display: none;
-object-fit: cover;
-object-position: top;
+.boxes {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
 }
-@media (orientation: landscape) {
-img {
-width: 50%;
-height: 100%;
-margin-left: auto;
-margin-right: auto;
+.box {
+    flex: 1;
+    min-width: 230px;
 }
+label { display: block; margin-bottom: 8px; }
+textarea {
+    box-sizing: border-box;
+    width: 100%;
+    height: 180px;
+    padding: 12px;
+    font: 18px sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
-@media (orientation: portrait) {
-img {
-width: 100%;
-height: 75%;
-position: absolute;
-top: 50%;
-transform: translateY(-50%);
+#output { font-size: 24px; }
+button {
+    margin-top: 12px;
+    padding: 8px 14px;
+    cursor: pointer;
 }
+footer {
+    margin-top: 30px;
+    font-size: 14px;
 }
-.topbar {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 50px;
-display: flex;
-align-items: center;
-background: rgba(0, 0, 0, 0);
-transition: background 0.3s ease;
-}
-.topbar:hover {
-background: rgba(0, 0, 0, 1);
-color: white;
-}
-.topbar a {
-padding: 0 15px;
-text-decoration: none;
-line-height: 50px;
-background: rgba(0, 0, 0, 0);
-color: rgba(255, 255, 255, 0.4);
-transition: background 0.2s ease, color 0.2s ease;
-}
-.topbar a:hover {
-background: rgba(255, 255, 255, 0.2);
-color: white;
-}
+a { color: #444; }
 </style>
 </head>
 <body>
-<div class="topbar">
-<a href="https://discord.gg/volcel"> Discord</a>
-<a href="https://lebanonisaryan.xyz"> Other Website</a>
-<a href="https://antisa.lt/discord-image"> Images</a>
-<a href="https://pick.plaid.red"> Generators</a>
-</div>
-<img id="sit" src="cleo/sit.jpg" />
-<img id="meow" src="cleo/meow.jpg" />
-<img id="swing-start" src="cleo/swing-start.jpg" />
-<img id="swing" src="cleo/swing.jpg" />
-<img id="swing-end" src="cleo/swing-end.jpg" />
-<img id="stare" src="cleo/stare.jpg" />
-<script>
-document.getElementById('sit').style.display = 'block';
-function meow() {
-document.getElementById('sit').style.display = 'none';
-document.getElementById('meow').style.display = 'block';
-setTimeout(() => {
-document.getElementById('meow').style.display = 'none';
-document.getElementById('sit').style.display = 'block';
-}, 500);
-}
-function swing() {
-document.getElementById('sit').style.display = 'none';
-document.getElementById('swing-start').style.display = 'block';
-setTimeout(() => {
-document.getElementById('swing-start').style.display = 'none';
-document.getElementById('swing').style.display = 'block';
-}, 150);
-setTimeout(() => {
-document.getElementById('swing').style.display = 'none';
-document.getElementById('swing-end').style.display = 'block';
-}, 300);
-setTimeout(() => {
-document.getElementById('swing-end').style.display = 'none';
-document.getElementById('sit').style.display = 'block';
-}, 450);
-}
-function stare() {
-document.getElementById('sit').style.display = 'none';
-document.getElementById('stare').style.display = 'block';
-setTimeout(() => {
-document.getElementById('stare').style.display = 'none';
-document.getElementById('sit').style.display = 'block';
-}, 1000);
-}
 
-function animate() {
-setTimeout(() => {
-meow();
-}, 1000);
-setTimeout(() => {
-swing();
-}, 3000);
-setTimeout(() => {
-swing();
-}, 3600);
-setTimeout(() => {
-meow();
-}, 6000);
-setTimeout(() => {
-stare();
-}, 11000);
-setTimeout(() => {
-animate();
-}, 15000);
-}
-window.onload = () => animate();
+<h2>Lisu Converter</h2>
+
+<div class="boxes">
+    <div class="box">
+        <label for="input">Latin Text</label>
+        <textarea id="input" placeholder="Type here..."></textarea>
+    </div>
+    <div class="box">
+        <label for="output">Lisu Unicode</label>
+        <textarea id="output" readonly></textarea>
+    </div>
+</div>
+
+<button id="copy">Copy Output</button>
+<button id="clear">Clear</button>
+
+<footer>
+    <p>Discord: <a href="https://discord.gg/giga">discord.gg/giga</a></p>
+    <p>Contact: <strong>kingbelisariusix4 (On Discord)</strong></p>
+    <p>Info: This is a website dedicated to bypassing common text filters on discord</p>
+</footer>
+
+<script>
+const mapping = {
+    a:"ꓮ", b:"ꓐ", c:"ꓚ", d:"ꓓ", e:"ꓰ",
+    f:"ꓝ", g:"ꓖ", h:"ꓧ", i:"ꓲ", j:"ꓙ",
+    k:"ꓗ", l:"ꓡ", m:"ꓟ", n:"ꓠ", o:"ꓳ",
+    p:"ꓑ", q:"ꓣ", r:"ꓣ", s:"ꓢ", t:"ꓔ",
+    u:"ꓴ", v:"ꓦ", w:"ꓪ", x:"ꓫ", y:"ꓬ",
+    z:"ꓜ"
+};
+
+const input = document.getElementById("input");
+const output = document.getElementById("output");
+
+input.addEventListener("input", () => {
+    output.value = [...input.value]
+        .map(c => mapping[c.toLowerCase()] || c)
+        .join("");
+});
+
+document.getElementById("copy").onclick = async () => {
+    try {
+        await navigator.clipboard.writeText(output.value);
+    } catch {
+        output.select();
+        document.execCommand("copy");
+    }
+};
+
+document.getElementById("clear").onclick = () => {
+    input.value = "";
+    output.value = "";
+    input.focus();
+};
 </script>
+
 </body>
 </html>
